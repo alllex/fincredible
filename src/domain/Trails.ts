@@ -1,5 +1,3 @@
-
-
 export enum TrailType {
   Circle = "Circle",
   OneWay = "One Way",
@@ -40,4 +38,7 @@ export interface Trail {
   description: string | undefined;
   startingPoint: string;
   services: Set<TrailService>;
+  img1: string | undefined;
+  img2: string | undefined;
+  img3: string | undefined;
 }

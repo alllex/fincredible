@@ -1,4 +1,11 @@
 import { Trail, TrailDifficulty, TrailType, TrailService } from "./Trails";
+import { resolvePublicPath } from "@/util";
+
+const photoPath = resolvePublicPath("trailPhotos");
+
+function makePhotoPath(photoName: string): string {
+  return `${photoPath}/${photoName}`;
+}
 
 export let trails: Trail[] = [
   {
@@ -20,7 +27,10 @@ export let trails: Trail[] = [
       TrailService.DrinkingWater,
       TrailService.Recycling,
       TrailService.Parking
-    ])
+    ]),
+    img1: makePhotoPath("1.png"),
+    img2: makePhotoPath("11.jpg"),
+    img3: makePhotoPath("12.jpg")
   },
   {
     name: "Haukankierros Trail",
@@ -41,7 +51,10 @@ export let trails: Trail[] = [
       TrailService.DrinkingWater,
       TrailService.Recycling,
       TrailService.Parking
-    ])
+    ]),
+    img1: makePhotoPath("2.png"),
+    img2: makePhotoPath("21.jpg"),
+    img3: makePhotoPath("22.jpeg")
   },
   {
     name: "Korpinkierros Trail",
@@ -62,7 +75,10 @@ export let trails: Trail[] = [
       TrailService.DrinkingWater,
       TrailService.Recycling,
       TrailService.Parking
-    ])
+    ]),
+    img1: makePhotoPath("3.png"),
+    img2: makePhotoPath("31.jpeg"),
+    img3: makePhotoPath("32.jpg")
   },
   {
     name: "Takala Trail",
@@ -84,7 +100,10 @@ export let trails: Trail[] = [
       TrailService.DrinkingWater,
       TrailService.Recycling,
       TrailService.Parking
-    ])
+    ]),
+    img1: makePhotoPath("4.png"),
+    img2: makePhotoPath("41.jpg"),
+    img3: makePhotoPath("42.jpeg")
   },
   {
     name: "Kaarniaispolku Nature Trail",
@@ -94,10 +113,10 @@ export let trails: Trail[] = [
     type: TrailType.Circle,
     description: "Specially designed for schoolchildren, Kaarinaispolku is also suitable for other hikers.",
     startingPoint: "Kaarniaispolku parking area at the end of Soidentaantie road in Veikkola industrial estate",
-    services: new Set([
-      TrailService.NatureTrail,
-      TrailService.Parking
-    ])
+    services: new Set([TrailService.NatureTrail, TrailService.Parking]),
+    img1: makePhotoPath("5.png"),
+    img2: makePhotoPath("51.jpg"),
+    img3: makePhotoPath("52.jpeg")
   },
   {
     name: "Soidinkierros Trail",
@@ -107,11 +126,10 @@ export let trails: Trail[] = [
     type: TrailType.Circle,
     description: "An easy trail that mostly meanders along open rocky ground.",
     startingPoint: "Siikaranta, Hotel Nuuksio, Naruportintie 68, 02860 Kirkkonummi",
-    services: new Set([
-      TrailService.Accomodation,
-      TrailService.Restaturant,
-      TrailService.PublicTransportAccess
-    ])
+    services: new Set([TrailService.Accomodation, TrailService.Restaturant, TrailService.PublicTransportAccess]),
+    img1: makePhotoPath("6.png"),
+    img2: makePhotoPath("61.jpg"),
+    img3: makePhotoPath("62.jpg")
   },
   {
     name: "Nahkiaispolku Nature Trail",
@@ -126,7 +144,10 @@ export let trails: Trail[] = [
       TrailService.NatureInfoHut,
       TrailService.DrinkingWater,
       TrailService.Parking
-    ])
+    ]),
+    img1: makePhotoPath("7.png"),
+    img2: makePhotoPath("71.jpeg"),
+    img3: makePhotoPath("72.jpg")
   },
   {
     name: "Klassarinkierros Trail",
@@ -142,7 +163,10 @@ export let trails: Trail[] = [
       TrailService.Accomodation,
       TrailService.DryToilet,
       TrailService.Parking
-    ])
+    ]),
+    img1: makePhotoPath("8.png"),
+    img2: makePhotoPath("81.jpeg"),
+    img3: makePhotoPath("82.jpeg")
   },
   {
     name: "Haukkalampi-Haltia Connecting Trail",
@@ -158,7 +182,10 @@ export let trails: Trail[] = [
       TrailService.DrinkingWater,
       TrailService.Recycling,
       TrailService.PublicTransportAccess
-    ])
+    ]),
+    img1: makePhotoPath("9.png"),
+    img2: makePhotoPath("91.jpg"),
+    img3: makePhotoPath("92.jpg")
   },
   {
     name: "Veikkola-Salmi Connecting Trail",
@@ -168,10 +195,10 @@ export let trails: Trail[] = [
     type: TrailType.OneWay,
     description: "Challenging.",
     startingPoint: "Salmi hiking area and Veikkola, Kaarniaispolku Nature Trail parking area",
-    services: new Set([
-      TrailService.Campfire,
-      TrailService.Parking
-    ])
+    services: new Set([TrailService.Campfire, TrailService.Parking]),
+    img1: makePhotoPath("10.png"),
+    img2: makePhotoPath("101.jpg"),
+    img3: makePhotoPath("102.jpg")
   },
   {
     name: "Päivättärenpolku Trail",
@@ -181,7 +208,10 @@ export let trails: Trail[] = [
     type: TrailType.Circle,
     description: "",
     startingPoint: "Finnish Nature Center Haltia, Nuuksiontie 84, 02820 Espoo",
-    services: new Set([])
+    services: new Set([]),
+    img1: makePhotoPath("11.jpeg"),
+    img2: makePhotoPath("111.jpg"),
+    img3: makePhotoPath("112.jpeg")
   },
   {
     name: "Maahisenkierros",
@@ -191,6 +221,9 @@ export let trails: Trail[] = [
     type: TrailType.Circle,
     description: "",
     startingPoint: "Finnish Nature Center Haltia, Nuuksiontie 84, 02820 Espoo",
-    services: new Set([])
+    services: new Set([]),
+    img1: makePhotoPath("12.png"),
+    img2: makePhotoPath("121.jpg"),
+    img3: makePhotoPath("122.jpeg")
   }
 ];

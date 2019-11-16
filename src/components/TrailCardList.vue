@@ -2,9 +2,6 @@
   <div class="mb-2">
     <trail-card
       v-for="trail in trails"
-      img1="https://picsum.photos/440/300/?image=25"
-      img2="https://picsum.photos/600/300/?image=25"
-      img3="https://picsum.photos/600/300/?image=25"
       :key="trail.name"
       :name="trail.name"
       :type="trail.type"
@@ -12,6 +9,9 @@
       :duration="trail.durationHours"
       :difficulty="trail.difficulty"
       :services="trail.services"
+      :img1="trail.img1"
+      :img2="trail.img2"
+      :img3="trail.img3"
     ></trail-card>
   </div>
 </template>
