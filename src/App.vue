@@ -9,17 +9,7 @@
           <FilterPanel></FilterPanel>
         </b-col>
         <b-col class="content-panel">
-          <div>
-            <trail-card
-              name="Punarinnankierros Trail"
-              img1="https://picsum.photos/440/300/?image=25"
-              img2="https://picsum.photos/600/300/?image=25"
-              img3="https://picsum.photos/600/300/?image=25"
-              distance="2.0"
-              duration="1h"
-              difficulty="easy"
-            ></trail-card>
-          </div>
+          <trail-card-list :trails="trails"></trail-card-list>
         </b-col>
       </b-row>
     </b-container>
@@ -28,18 +18,23 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
-import TrailCard from "./components/TrailCard.vue";
+import TrailCardList from "./components/TrailCardList.vue";
 import FilterPanel from "./components/FilterPanel.vue";
 import { Trail } from "./domain/Trails";
+import { trails } from "./domain/TrailDefinitions";
 
 @Component({
   components: {
-    TrailCard,
+    TrailCardList,
     FilterPanel
+  },
+  data() {
+    return {
+      trails
+    };
   }
 })
 export default class App extends Vue {
-  @Prop() private trails!: Trail[];
 }
 </script>
 
