@@ -2,11 +2,13 @@
   <div>
     <div class="my-2">
       <div class="bold">Visit day:</div>
-      <date-pick class="date-pick-wrapper" v-model="date"></date-pick>
+      <div>
+        <date-pick class="date-pick-wrapper" v-model="date"></date-pick>
+      </div>
     </div>
     <div class="my-2">
       <div>Distance: {{ distanceBounds[0] }}km - {{ distanceBounds[1] }}km</div>
-      <div class="distance-slider-div">
+      <div class="slider-div">
         <vue-slider
           v-model="distanceBounds"
           :tooltip-placement="'bottom'"
@@ -18,7 +20,7 @@
     </div>
     <div class="my-2">
       <div>Time: {{ hoursBounds[0] }}h - {{ hoursBounds[1] }}h</div>
-      <div class="hours-slider-div">
+      <div class="slider-div">
         <vue-slider
           v-model="hoursBounds"
           :tooltip-placement="'bottom'"
@@ -95,7 +97,7 @@ export default class FilterPanel extends Vue {
 </script>
 
 <style scoped>
-.distance-slider-div {
+.slider-div {
   min-width: 175px;
   margin: 5px 10px 0 5px;
 }
