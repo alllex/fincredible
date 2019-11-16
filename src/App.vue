@@ -1,13 +1,12 @@
 <template>
   <div id="app">
-    <h1>Fincredible filters</h1>
-    <b-container class="bv-example-row">
+    <b-container>
       <b-row>
-        <b-col class="filter-panel" cols="4">
-          <ol>
-            <li>Item one</li>
-            <li>Item two</li>
-          </ol>
+        <h1>Fincredible filters</h1>
+      </b-row>
+      <b-row>
+        <b-col class="filter-panel" cols="auto">
+          <FilterPanel></FilterPanel>
         </b-col>
         <b-col class="content-panel">
           <div>
@@ -29,14 +28,13 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import HelloWorld from "./components/HelloWorld.vue";
 import Card from "./components/Card.vue";
-
+import FilterPanel from "./components/FilterPanel.vue";
 
 @Component({
   components: {
-    HelloWorld,
-    Card
+    Card,
+    FilterPanel
   }
 })
 export default class App extends Vue {}
@@ -47,9 +45,6 @@ export default class App extends Vue {}
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* text-align: center; */
-  color: #2c3e50;
-  margin-top: 60px;
 }
 </style>
 
