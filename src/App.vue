@@ -28,7 +28,7 @@ import {
 } from "./domain/Trails";
 import { trails as allDefinedTrails } from "./domain/TrailDefinitions";
 import { AppState } from "./AppState";
-import { TrailFiltering } from "./domain/TrailFilters";
+import { TrailFiltering, filterTrail } from "./domain/TrailFilters";
 
 @Component({
   components: {
@@ -40,12 +40,16 @@ export default class App extends Vue {
   public state: AppState = {
     allTrails: allDefinedTrails,
     filtering: {
-      difficulties: [],
+      difficulties: [
+        TrailDifficulty.Easy,
+        TrailDifficulty.Moderate,
+        TrailDifficulty.Hard
+      ],
       distance: {
         fromKm: 0,
         uptoKm: 20
       },
-      types: [],
+      types: [TrailType.Circle, TrailType.OneWay, TrailType.Connecting],
       services: []
     },
     matchingTrails: allDefinedTrails
@@ -53,7 +57,11 @@ export default class App extends Vue {
 
   @Watch("state.filtering", { deep: true })
   onTrailFilteringChange(val: TrailFiltering, oldVal: TrailFiltering) {
-    console.log("Filtering changed!");
+    const filtering = this.state.filtering;
+    const newMatchingTrails = this.state.allTrails.filter(it =>
+      filterTrail(it, filtering)
+    );
+    this.state.matchingTrails = newMatchingTrails;
   }
 }
 </script>
