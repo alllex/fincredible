@@ -80,7 +80,7 @@ export default class TrailCard extends Vue {
   @Prop() private difficulty!: string;
   @Prop() private services!: TrailService[];
 
-  public serviceIconPath: string = resolvePublicPath("service-icons");
+  private serviceIconPath: string = resolvePublicPath("service-icons");
 }
 </script>
 
