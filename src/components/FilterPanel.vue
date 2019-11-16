@@ -33,29 +33,29 @@
     <hr />
     <div class="my-2">
       <b-form-group label>
-        <b-form-checkbox v-model="loopTrackChecked">Loop track</b-form-checkbox>
+        <b-form-checkbox>Loop track</b-form-checkbox>
         <hr />
         <div class="bold">Transportation</div>
         <div class="my-2">
-          <b-form-checkbox v-model="parkingChecked">Parking</b-form-checkbox>
-          <b-form-checkbox v-model="pablicTransportChecked">Public transport</b-form-checkbox>
+          <b-form-checkbox @change="onServiceChecked(enumTrailService.Parking, $event)">Parking</b-form-checkbox>
+          <b-form-checkbox>Public transport</b-form-checkbox>
         </div>
 
         <hr />
         <div class="bold">Accomodation</div>
         <div class="my-2">
-          <b-form-checkbox v-model="AccomodationChecked">Accomodation</b-form-checkbox>
-          <b-form-checkbox v-model="LappHutChecked">Lapp Hut</b-form-checkbox>
-          <b-form-checkbox v-model="TentSideChecked">Tent Side</b-form-checkbox>
-          <b-form-checkbox v-model="NatureInfoHutChecked">NatureInfoHut</b-form-checkbox>
+          <b-form-checkbox>Accomodation</b-form-checkbox>
+          <b-form-checkbox>Lapp Hut</b-form-checkbox>
+          <b-form-checkbox>Tent Side</b-form-checkbox>
+          <b-form-checkbox>NatureInfoHut</b-form-checkbox>
         </div>
 
         <hr />
         <div class="bold">Food</div>
         <div class="my-2">
-          <b-form-checkbox v-model="CookingShelterChecked">Cooking Shelter</b-form-checkbox>
-          <b-form-checkbox v-model="CampfireChecked">Campfire</b-form-checkbox>
-          <b-form-checkbox v-model="RestaurantChecked">Restaurant</b-form-checkbox>
+          <b-form-checkbox>Cooking Shelter</b-form-checkbox>
+          <b-form-checkbox>Campfire</b-form-checkbox>
+          <b-form-checkbox>Restaurant</b-form-checkbox>
         </div>
       </b-form-group>
     </div>
@@ -69,12 +69,8 @@ import VueSlider from "vue-slider-component";
 import "vue-slider-component/theme/default.css";
 import moment from "moment";
 import "vue-date-pick/dist/vueDatePick.css";
-
-enum DistanceGroup {
-  Group1to3,
-  Group4to7,
-  Group8plus
-}
+import { AppState } from "@/AppState";
+import { TrailService } from "../domain/Trails";
 
 @Component({
   components: {
@@ -83,6 +79,10 @@ enum DistanceGroup {
   }
 })
 export default class FilterPanel extends Vue {
+  @Prop() private appState!: AppState;
+
+  private enumTrailService = TrailService;
+
   public date: string = moment().format("YYYY-MM-DD");
   public parkingChecked: boolean = false;
   public sleepingChecked: boolean = false;
@@ -93,6 +93,17 @@ export default class FilterPanel extends Vue {
   public hoursBounds = [0, 48];
   public distanceBoundFormatter = "{value}km";
   public hoursBoundFormatter = "{value}h";
+
+  private onServiceChecked(service: TrailService, checked: boolean) {
+    const services = this.appState.filtering.services.filter(
+      it => it !== service
+    );
+    const newServices = checked ? [...services, service] : services;
+    this.appState.filtering = {
+      ...this.appState.filtering,
+      services: newServices
+    };
+  }
 }
 </script>
 

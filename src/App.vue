@@ -6,7 +6,7 @@
       </b-row>
       <b-row>
         <b-col class="filter-panel" cols="auto">
-          <FilterPanel></FilterPanel>
+          <FilterPanel :appState="state"></FilterPanel>
         </b-col>
         <b-col class="content-panel">
           <trail-card-list :trails="state.matchingTrails"></trail-card-list>
