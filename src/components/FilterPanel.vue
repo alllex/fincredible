@@ -5,14 +5,6 @@
       <date-pick class="date-pick-wrapper" v-model="date"></date-pick>
     </div>
     <div class="my-2">
-      <b-form-group label="Track options:">
-        <b-form-checkbox v-model="parkingChecked">Parking</b-form-checkbox>
-        <b-form-checkbox v-model="sleepingChecked">Sleeping</b-form-checkbox>
-        <b-form-checkbox v-model="cookingChecked">Cooking</b-form-checkbox>
-        <b-form-checkbox v-model="loopTrackChecked">Loop track</b-form-checkbox>
-      </b-form-group>
-    </div>
-    <div class="my-2">
       <div>Distance: {{ distanceBounds[0] }}km - {{ distanceBounds[1] }}km</div>
       <div class="distance-slider-div">
         <vue-slider
@@ -23,6 +15,40 @@
           :max="20"
         ></vue-slider>
       </div>
+    </div>
+    <div class="my-2">
+      <div>Time: {{ hoursBounds[0] }}h - {{ hoursBounds[1] }}h</div>
+      <div class="hours-slider-div">
+        <vue-slider
+          v-model="hoursBounds"
+          :tooltip-placement="'bottom'"
+          :tooltip-formatter="hoursBoundFormatter"
+          :min="0"
+          :max="48"
+        ></vue-slider>
+      </div>
+    </div>
+    <div class="my-2">
+      <b-form-group label="Track options:">
+        <b-form-checkbox v-model="loopTrackChecked">Loop track</b-form-checkbox>//transportation
+        <div class="my-2">
+          <b-form-checkbox v-model="parkingChecked">Parking</b-form-checkbox>
+          <b-form-checkbox v-model="pablicTransportChecked">Public transport</b-form-checkbox>
+        </div>//accomodation
+        <div class="my-2">
+          <b-form-checkbox v-model="AccomodationChecked">Accomodation</b-form-checkbox>
+          <b-form-checkbox v-model="LappHutChecked">Lapp Hut</b-form-checkbox>
+          <b-form-checkbox v-model="TentSideChecked">Tent Side</b-form-checkbox>
+          <b-form-checkbox v-model="NatureInfoHutChecked">NatureInfoHut</b-form-checkbox>
+          <b-form-checkbox v-model="sleepingChecked">Sleeping</b-form-checkbox>
+        </div>f
+        //food
+        <div class="my-2">
+          <b-form-checkbox v-model="CookingShelterChecked">Cooking Shelter</b-form-checkbox>
+          <b-form-checkbox v-model="CampfireChecked">Campfire</b-form-checkbox>
+          <b-form-checkbox v-model="RestaurantChecked">Restaurant</b-form-checkbox>
+        </div>
+      </b-form-group>
     </div>
   </div>
 </template>
@@ -55,7 +81,9 @@ export default class FilterPanel extends Vue {
   public loopTrackChecked: boolean = false;
 
   public distanceBounds = [0, 20];
+  public hoursBounds = [0, 48];
   public distanceBoundFormatter = "{value}km";
+  public hoursBoundFormatter = "{value}h";
 }
 </script>
 
