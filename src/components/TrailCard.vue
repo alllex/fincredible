@@ -2,8 +2,11 @@
   <div class="d-flex justify-content-center mb-2">
     <div class="card mb-3" style="max-width: 540px;">
       <div class="row no-gutters">
-        <div class="col-md-12 p-1">
+        <div class="col-md-11 p-1">
           <h4>{{ name }} ({{type}})</h4>
+        </div>
+        <div class="p-1">
+          <img :src="crowdednessIconPath" width="32" height="32" alt="..." />
         </div>
       </div>
       <div class="row no-gutters">
@@ -59,6 +62,7 @@
 import { Component, Prop, Vue } from "vue-property-decorator";
 import { TrailDifficulty, TrailType, TrailService } from "../domain/Trails";
 import { resolvePublicPath } from "@/util";
+import { Crowdedness } from "@/domain/Crowdedness";
 
 @Component({
   data() {
@@ -79,8 +83,23 @@ export default class TrailCard extends Vue {
   @Prop() private duration!: string;
   @Prop() private difficulty!: string;
   @Prop() private services!: TrailService[];
+  @Prop() private crowdedness!: Crowdedness;
 
   private serviceIconPath: string = resolvePublicPath("service-icons");
+  private crowdednessIconPath: string = resolvePublicPath(
+    `crowdedness-icons/${this.getCrowdednessFilename(this.crowdedness)}`
+  );
+
+  private getCrowdednessFilename(c: Crowdedness): string {
+    switch (c) {
+      case Crowdedness.Low:
+        return "green.png";
+      case Crowdedness.Mid:
+        return "yellow.png";
+      case Crowdedness.High:
+        return "red.png";
+    }
+  }
 }
 </script>
 

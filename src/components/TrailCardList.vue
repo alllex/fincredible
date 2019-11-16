@@ -12,6 +12,7 @@
       :img1="trail.img1"
       :img2="trail.img2"
       :img3="trail.img3"
+      :crowdedness="enumCrowdedness.High"
     ></trail-card>
   </div>
 </template>
@@ -19,7 +20,8 @@
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
 import TrailCard from "./TrailCard.vue";
-import { Trail } from "../domain/Trails";
+import { Trail } from "@/domain/Trails";
+import { Crowdedness } from "@/domain/Crowdedness";
 
 @Component({
   components: {
@@ -28,6 +30,8 @@ import { Trail } from "../domain/Trails";
 })
 export default class TrailCardList extends Vue {
   @Prop() private trails!: Trail[];
+
+  private enumCrowdedness = Crowdedness;
 }
 </script>
 
