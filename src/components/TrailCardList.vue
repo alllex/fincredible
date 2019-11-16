@@ -9,7 +9,7 @@
             :name="trail.name"
             :type="trail.type"
             :distance="trail.distanceKm"
-            :duration="trail.timeHours"
+            :duration="trail.durationHours"
             :difficulty="trail.difficulty"
             :services="trail.services"
         ></trail-card>
