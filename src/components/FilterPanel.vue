@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="my-2">
-      <div>Visit day:</div>
+      <div class="bold">Visit day:</div>
       <date-pick class="date-pick-wrapper" v-model="date"></date-pick>
     </div>
     <div class="my-2">
@@ -28,21 +28,28 @@
         ></vue-slider>
       </div>
     </div>
+    <hr />
     <div class="my-2">
-      <b-form-group label="Track options:">
-        <b-form-checkbox v-model="loopTrackChecked">Loop track</b-form-checkbox>//transportation
+      <b-form-group label>
+        <b-form-checkbox v-model="loopTrackChecked">Loop track</b-form-checkbox>
+        <hr />
+        <div class="bold">Transportation</div>
         <div class="my-2">
           <b-form-checkbox v-model="parkingChecked">Parking</b-form-checkbox>
           <b-form-checkbox v-model="pablicTransportChecked">Public transport</b-form-checkbox>
-        </div>//accomodation
+        </div>
+
+        <hr />
+        <div class="bold">Accomodation</div>
         <div class="my-2">
           <b-form-checkbox v-model="AccomodationChecked">Accomodation</b-form-checkbox>
           <b-form-checkbox v-model="LappHutChecked">Lapp Hut</b-form-checkbox>
           <b-form-checkbox v-model="TentSideChecked">Tent Side</b-form-checkbox>
           <b-form-checkbox v-model="NatureInfoHutChecked">NatureInfoHut</b-form-checkbox>
-          <b-form-checkbox v-model="sleepingChecked">Sleeping</b-form-checkbox>
-        </div>f
-        //food
+        </div>
+
+        <hr />
+        <div class="bold">Food</div>
         <div class="my-2">
           <b-form-checkbox v-model="CookingShelterChecked">Cooking Shelter</b-form-checkbox>
           <b-form-checkbox v-model="CampfireChecked">Campfire</b-form-checkbox>
@@ -91,5 +98,9 @@ export default class FilterPanel extends Vue {
 .distance-slider-div {
   min-width: 175px;
   margin: 5px 10px 0 5px;
+}
+
+.bold {
+  font-weight: bold;
 }
 </style>
