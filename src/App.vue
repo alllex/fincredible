@@ -10,7 +10,7 @@
         </b-col>
         <b-col class="content-panel">
           <div>
-            <card
+            <trail-card
               name="Punarinnankierros Trail"
               img1="https://picsum.photos/440/300/?image=25"
               img2="https://picsum.photos/600/300/?image=25"
@@ -18,7 +18,7 @@
               distance="2.0"
               duration="1h"
               difficulty="easy"
-            ></card>
+            ></trail-card>
           </div>
         </b-col>
       </b-row>
@@ -28,12 +28,12 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import Card from "./components/Card.vue";
+import TrailCard from "./components/TrailCard.vue";
 import FilterPanel from "./components/FilterPanel.vue";
 
 @Component({
   components: {
-    Card,
+    TrailCard,
     FilterPanel
   }
 })
