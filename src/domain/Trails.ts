@@ -1,43 +1,43 @@
 
 
 export enum TrailType {
-    Circle = "Circle Trail",
-    OneWay = "One Way Trail",
-    Connecting = "Connecting Trail"
+  Circle = "Circle",
+  OneWay = "One Way",
+  Connecting = "Connecting"
 }
 
 export enum TrailDifficulty {
-    Easy,
-    Moderate,
-    Hard
+  Easy,
+  Moderate,
+  Hard
 }
 
 export enum TrailService {
-    Campfire = "https://www.nationalparks.fi/documents/10550/21915857/Tulentekopaikka.png",
-    CookingShelter = "https://www.nationalparks.fi/documents/10550/21915857/Keittokatos.png",
-    LeanToSchelter = "https://www.nationalparks.fi/documents/10550/21915857/Laavu.png",
-    TentSide = "https://www.nationalparks.fi/documents/10550/21915857/Telttalupaikka.png",
-    DryToilet = "https://www.nationalparks.fi/documents/10550/21915857/Kuivakaymala.png",
-    NatureInfoHut = "https://www.nationalparks.fi/documents/10550/21915857/Luontotupa.png",
-    LappHut = "https://www.nationalparks.fi/documents/10550/21915857/Varauskota.png",
-    ReservableSauna = "https://www.nationalparks.fi/documents/10550/21915857/Varaussauna.png",
-    InformationBoard = "https://www.nationalparks.fi/documents/10550/21915857/Opastustaulu.png",
-    DrinkingWater = "https://www.nationalparks.fi/documents/10550/21915857/Vesipiste.png",
-    Recycling = "https://www.nationalparks.fi/documents/10550/21915857/Jatteiden_lajittelu.png",
-    Parking = "https://www.nationalparks.fi/documents/10550/21915857/Pysakointialue.png",
-    NatureTrail = "https://www.nationalparks.fi/documents/10550/21915857/Luontopolku.png",
-    Accomodation = "https://www.nationalparks.fi/documents/10550/21915857/Majoitus.png",
-    Restaturant = "https://www.nationalparks.fi/documents/10550/21915857/Ravintola.png",
-    PublicTransportAccess = "..."
+  Campfire = "campfire-place",
+  CookingShelter = "cooking-shelter",
+  LeanToSchelter = "lean-to-shelter",
+  TentSide = "tent-side",
+  DryToilet = "dry-toilet",
+  NatureInfoHut = "nature-information-hut",
+  LappHut = "rental-lapp-hut",
+  ReservableSauna = "rental-sauna",
+  InformationBoard = "information-board",
+  DrinkingWater = "drinking-water",
+  Recycling = "recycling",
+  Parking = "parking",
+  NatureTrail = "nature-trail",
+  Accomodation = "accomodation",
+  Restaturant = "restaurant",
+  PublicTransportAccess = "..."
 }
 
 export interface Trail {
-    name: string;
-    distanceKm: number;
-    durationHours: number | undefined;
-    type: TrailType;
-    difficulty: TrailDifficulty;
-    description: string | undefined;
-    startingPoint: string;
-    services: Set<TrailService>;
+  name: string;
+  distanceKm: number;
+  durationHours: number | undefined;
+  type: TrailType;
+  difficulty: TrailDifficulty;
+  description: string | undefined;
+  startingPoint: string;
+  services: Set<TrailService>;
 }
