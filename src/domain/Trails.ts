@@ -34,10 +34,9 @@ export enum TrailService {
 export interface Trail {
     name: string;
     distanceKm: number;
-    timeHours: number | undefined;
+    durationHours: number | undefined;
     type: TrailType;
     difficulty: TrailDifficulty;
-    maintainedOnWinter: boolean;
     description: string | undefined;
     startingPoint: string;
     services: Set<TrailService>;
