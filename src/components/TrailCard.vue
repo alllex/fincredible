@@ -35,7 +35,7 @@
 import { Component, Prop, Vue } from "vue-property-decorator";
 
 @Component
-export default class Card extends Vue {
+export default class TrailCard extends Vue {
     @Prop() private name!: string;
     @Prop() private img1!: string;
     @Prop() private img2!: string;
