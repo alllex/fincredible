@@ -28,7 +28,7 @@ export enum TrailService {
   NatureTrail = "nature-trail",
   Accomodation = "accomodation",
   Restaturant = "restaurant",
-  PublicTransportAccess = "..."
+  PublicTransportAccess = "public-transport"
 }
 
 export interface Trail {

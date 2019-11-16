@@ -46,6 +46,8 @@
             class="m-1"
             v-for="service in services"
             :key="service"
+            width="32"
+            height="32"
           />
         </div>
       </div>
