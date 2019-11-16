@@ -27,9 +27,10 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
+import { Component, Prop, Vue } from "vue-property-decorator";
 import TrailCard from "./components/TrailCard.vue";
 import FilterPanel from "./components/FilterPanel.vue";
+import { Trail } from "./domain/Trails";
 
 @Component({
   components: {
@@ -37,7 +38,9 @@ import FilterPanel from "./components/FilterPanel.vue";
     FilterPanel
   }
 })
-export default class App extends Vue {}
+export default class App extends Vue {
+  @Prop() private trails!: Trail[];
+}
 </script>
 
 <style>
