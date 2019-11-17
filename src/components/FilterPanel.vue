@@ -132,16 +132,12 @@ export default class FilterPanel extends Vue {
   private enumTrailType = TrailType;
   private enumTrailDifficulty = TrailDifficulty;
 
-  public date: string = moment().format("YYYY-MM-DD");
-  public parkingChecked: boolean = false;
-  public sleepingChecked: boolean = false;
-  public cookingChecked: boolean = false;
-  public loopTrackChecked: boolean = false;
+  private date: string = moment().format("YYYY-MM-DD");
 
-  public distanceBounds = [0, 20];
-  public hoursBounds = [0, 48];
-  public distanceBoundFormatter = "{value}km";
-  public hoursBoundFormatter = "{value}h";
+  private distanceBounds = [0, 20];
+  private hoursBounds = [0, 48];
+  private distanceBoundFormatter = "{value}km";
+  private hoursBoundFormatter = "{value}h";
 
   public difficulties = [...this.appState.filtering.difficulties];
 
@@ -171,7 +167,7 @@ export default class FilterPanel extends Vue {
   }
 
   @Watch("distanceBounds", { deep: true })
-  onDistanceBoundsChange(val: number[], oldVal: number[]) {
+  private onDistanceBoundsChange(val: number[], oldVal: number[]) {
     this.appState.filtering.distance = {
       fromKm: val[0],
       uptoKm: val[1]
@@ -179,7 +175,7 @@ export default class FilterPanel extends Vue {
   }
 
   @Watch("hoursBounds", { deep: true })
-  onHoursBoundsChange(val: number[], oldVal: number[]) {
+  private onHoursBoundsChange(val: number[], oldVal: number[]) {
     this.appState.filtering.duration = {
       fromHours: val[0],
       uptoHours: val[1]
