@@ -6,6 +6,15 @@
           <FilterPanel :appState="state"></FilterPanel>
         </b-col>
         <b-col class="content-panel">
+          <div>
+            <div style="margin-top: 5px;">
+              Expected weather: {{ weatherByDate.get(state.date) || "unknown" }}
+              <span>
+                <i :class="`fas ${getWeatherIconName(weatherByDate.get(state.date))}`"></i>
+              </span>
+            </div>
+            <hr />
+          </div>
           <trail-card-list :trails="state.matchingTrails" :crowdednessByTrail="crowdednessByTrail"></trail-card-list>
         </b-col>
       </b-row>
@@ -27,6 +36,7 @@ import { trails as allDefinedTrails } from "./domain/TrailDefinitions";
 import { AppState } from "./AppState";
 import { TrailFiltering, filterTrail } from "./domain/TrailFilters";
 import { Crowdedness, getRandomCrowdedness } from "./domain/Crowdedness";
+import moment from "moment";
 
 @Component({
   components: {
@@ -37,6 +47,7 @@ import { Crowdedness, getRandomCrowdedness } from "./domain/Crowdedness";
 export default class App extends Vue {
   public state: AppState = {
     allTrails: allDefinedTrails,
+    date: moment().format("YYYY-MM-DD"),
     filtering: {
       difficulties: [
         TrailDifficulty.Easy,
@@ -58,6 +69,7 @@ export default class App extends Vue {
   };
 
   private crowdednessByTrail: Map<string, Crowdedness> = new Map();
+  private weatherByDate = new Map<string, string>();
 
   created() {
     const crByTrail = new Map<string, Crowdedness>();
@@ -77,16 +89,40 @@ export default class App extends Vue {
     }
 
     this.crowdednessByTrail = crByTrail;
+
+    this.weatherByDate.set("2019-11-17", "rainy");
+    this.weatherByDate.set("2019-11-18", "cloudy");
+    this.weatherByDate.set("2019-11-19", "heavy rain");
+    this.weatherByDate.set("2019-11-20", "clody");
+    this.weatherByDate.set("2019-11-21", "rainy");
+    this.weatherByDate.set("2019-11-22", "sunny");
+    this.weatherByDate.set("2019-11-23", "sunny");
+    this.weatherByDate.set("2019-11-24", "sunny");
   }
 
   @Watch("state.filtering", { deep: true })
-  onTrailFilteringChange(val: TrailFiltering, oldVal: TrailFiltering) {
+  private onTrailFilteringChange(val: TrailFiltering, oldVal: TrailFiltering) {
     console.log("Filtering changed!");
     const filtering = this.state.filtering;
     const newMatchingTrails = this.state.allTrails.filter(it =>
       filterTrail(it, filtering)
     );
     this.state.matchingTrails = newMatchingTrails;
+  }
+
+  private getWeatherIconName(weather: string): string {
+    switch (weather) {
+      case "rainy":
+        return "fa-cloud-rain";
+      case "cloudy":
+        return "fa-cloud";
+      case "sunny":
+        return "fa-sun";
+      case "heavy rain":
+        return "fa-cloud-showers-heavy";
+      default:
+        return "fa-cloud";
+    }
   }
 }
 </script>

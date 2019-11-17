@@ -3,7 +3,7 @@
     <div class="my-2">
       <div class="bold">Visit day</div>
       <div>
-        <date-pick class="date-pick-wrapper" v-model="date"></date-pick>
+        <date-pick class="date-pick-wrapper" v-model="appState.date"></date-pick>
       </div>
     </div>
     <hr />
@@ -114,7 +114,6 @@ import { Component, Prop, Vue, Watch } from "vue-property-decorator";
 import DatePick from "vue-date-pick";
 import VueSlider from "vue-slider-component";
 import "vue-slider-component/theme/default.css";
-import moment from "moment";
 import "vue-date-pick/dist/vueDatePick.css";
 import { AppState } from "@/AppState";
 import { TrailService, TrailType, TrailDifficulty } from "../domain/Trails";
@@ -131,8 +130,6 @@ export default class FilterPanel extends Vue {
   private enumTrailService = TrailService;
   private enumTrailType = TrailType;
   private enumTrailDifficulty = TrailDifficulty;
-
-  private date: string = moment().format("YYYY-MM-DD");
 
   private distanceBounds = [0, 20];
   private hoursBounds = [0, 48];
@@ -189,11 +186,14 @@ export default class FilterPanel extends Vue {
   min-width: 175px;
   margin: 5px 10px 0 5px;
 }
-
 .bold {
   font-weight: bold;
 }
-legend {
-  font-weight: bold;
-}
+/* .vdpWithInput {
+  line-height: 20px;
+  font-size: 12px;
+  border-radius: 2px;
+  border: 1px solid grey;
+  padding-left: 5px;
+} */
 </style>
