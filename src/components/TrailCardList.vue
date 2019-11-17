@@ -30,11 +30,13 @@ import { Crowdedness, getRandomCrowdedness } from "@/domain/Crowdedness";
 })
 export default class TrailCardList extends Vue {
   @Prop() private trails!: Trail[];
+  @Prop() private crowdednessByTrail!: Map<string, Crowdedness>;
 
   private enumCrowdedness = Crowdedness;
 
   private getCrowdedness(trailName: string): Crowdedness {
-    return getRandomCrowdedness();
+    const v = this.crowdednessByTrail.get(trailName);
+    return v === 0 || v ? v : getRandomCrowdedness();
   }
 }
 </script>

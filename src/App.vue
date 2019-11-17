@@ -9,7 +9,7 @@
           <FilterPanel :appState="state"></FilterPanel>
         </b-col>
         <b-col class="content-panel">
-          <trail-card-list :trails="state.matchingTrails"></trail-card-list>
+          <trail-card-list :trails="state.matchingTrails" :crowdednessByTrail="crowdednessByTrail"></trail-card-list>
         </b-col>
       </b-row>
     </b-container>
@@ -29,6 +29,7 @@ import {
 import { trails as allDefinedTrails } from "./domain/TrailDefinitions";
 import { AppState } from "./AppState";
 import { TrailFiltering, filterTrail } from "./domain/TrailFilters";
+import { Crowdedness, getRandomCrowdedness } from "./domain/Crowdedness";
 
 @Component({
   components: {
@@ -54,6 +55,28 @@ export default class App extends Vue {
     },
     matchingTrails: allDefinedTrails
   };
+
+  private crowdednessByTrail: Map<string, Crowdedness> = new Map();
+
+  created() {
+    const crByTrail = new Map<string, Crowdedness>();
+
+    for (let i = 0; i < allDefinedTrails.length; i++) {
+      const trail = allDefinedTrails[i];
+      let cr = getRandomCrowdedness();
+      if (i === 0 || i === 1) {
+        cr = Crowdedness.High;
+      } else if (i === 2) {
+        cr = Crowdedness.Mid;
+      } else {
+        cr = Math.random() < 0.7 ? Crowdedness.Low : Crowdedness.Mid;
+      }
+
+      crByTrail.set(trail.name, cr);
+    }
+
+    this.crowdednessByTrail = crByTrail;
+  }
 
   @Watch("state.filtering", { deep: true })
   onTrailFilteringChange(val: TrailFiltering, oldVal: TrailFiltering) {
