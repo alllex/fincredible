@@ -33,29 +33,37 @@
     <hr />
     <div class="my-2">
       <b-form-group label>
-        <b-form-checkbox>Loop track</b-form-checkbox>
+        <b-form-checkbox @change="onServiceChecked(enumTrailService.Circle, $event)">Loop track</b-form-checkbox>
         <hr />
         <div class="bold">Transportation</div>
         <div class="my-2">
           <b-form-checkbox @change="onServiceChecked(enumTrailService.Parking, $event)">Parking</b-form-checkbox>
-          <b-form-checkbox>Public transport</b-form-checkbox>
+          <b-form-checkbox
+            @change="onServiceChecked(enumTrailService.PublicTransportAccess, $event)"
+          >Public transport</b-form-checkbox>
         </div>
 
         <hr />
         <div class="bold">Accomodation</div>
         <div class="my-2">
-          <b-form-checkbox>Accomodation</b-form-checkbox>
-          <b-form-checkbox>Lapp Hut</b-form-checkbox>
-          <b-form-checkbox>Tent Side</b-form-checkbox>
-          <b-form-checkbox>NatureInfoHut</b-form-checkbox>
+          <b-form-checkbox @change="onServiceChecked(enumTrailService.Accomodation, $event)">Hotel</b-form-checkbox>
+          <b-form-checkbox @change="onServiceChecked(enumTrailService.LappHut, $event)">Lapp Hut</b-form-checkbox>
+          <b-form-checkbox @change="onServiceChecked(enumTrailService.TentSide, $event)">Tent Side</b-form-checkbox>
+          <b-form-checkbox
+            @change="onServiceChecked(enumTrailService.LeanToSchelter, $event)"
+          >LeanToSchelter</b-form-checkbox>
         </div>
 
         <hr />
         <div class="bold">Food</div>
         <div class="my-2">
-          <b-form-checkbox>Cooking Shelter</b-form-checkbox>
-          <b-form-checkbox>Campfire</b-form-checkbox>
-          <b-form-checkbox>Restaurant</b-form-checkbox>
+          <b-form-checkbox
+            @change="onServiceChecked(enumTrailService.CookingShelter, $event)"
+          >Cooking Shelter</b-form-checkbox>
+          <b-form-checkbox @change="onServiceChecked(enumTrailService.Campfire, $event)">Campfire</b-form-checkbox>
+          <b-form-checkbox
+            @change="onServiceChecked(enumTrailService.Restaturant, $event)"
+          >Restaurant</b-form-checkbox>
         </div>
       </b-form-group>
     </div>
