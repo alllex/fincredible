@@ -89,6 +89,8 @@ export default class App extends Vue {
     }
 
     this.crowdednessByTrail = crByTrail;
+    this.state.allTrails = this.shuffle(this.state.allTrails);
+    this.state.matchingTrails = this.state.allTrails;
 
     this.weatherByDate.set("2019-11-17", "rainy");
     this.weatherByDate.set("2019-11-18", "cloudy");
@@ -102,7 +104,6 @@ export default class App extends Vue {
 
   @Watch("state.filtering", { deep: true })
   private onTrailFilteringChange(val: TrailFiltering, oldVal: TrailFiltering) {
-    console.log("Filtering changed!");
     const filtering = this.state.filtering;
     const newMatchingTrails = this.state.allTrails.filter(it =>
       filterTrail(it, filtering)
@@ -123,6 +124,15 @@ export default class App extends Vue {
       default:
         return "fa-cloud";
     }
+  }
+
+  private shuffle(b: Trail[]): Trail[] {
+    const a = Array.from(b);
+    for (let i = a.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
   }
 }
 </script>
