@@ -35,9 +35,9 @@
               <span class="fa-li">
                 <i class="fas fa-layer-group"></i>
               </span>
-              <span v-if="difficulty == TrailDifficulty.Easy">easy</span>
-              <span v-else-if="difficulty == TrailDifficulty.Moderate">moderate</span>
-              <span v-else>hard</span>
+              <span v-if="difficulty == TrailDifficulty.Easy">Easy</span>
+              <span v-else-if="difficulty == TrailDifficulty.Moderate">Moderate</span>
+              <span v-else>Hard</span>
             </li>
           </ul>
         </div>

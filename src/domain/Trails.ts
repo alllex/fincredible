@@ -13,7 +13,7 @@ export enum TrailDifficulty {
 export enum TrailService {
   Campfire = "campfire-place",
   CookingShelter = "cooking-shelter",
-  LeanToSchelter = "lean-to-shelter",
+  LeanToShelter = "lean-to-shelter",
   TentSide = "tent-side",
   DryToilet = "dry-toilet",
   NatureInfoHut = "nature-information-hut",

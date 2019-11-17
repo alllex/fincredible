@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="my-2">
-      <div class="bold">Visit day:</div>
+      <div class="bold">Visit day</div>
       <div>
         <date-pick class="date-pick-wrapper" v-model="date"></date-pick>
       </div>
@@ -34,15 +34,45 @@
     </div>
     <hr />
     <div class="my-2">
-      <b-form-group label>
-        <b-form-checkbox @change="onServiceChecked(enumTrailService.Circle, $event)">Loop track</b-form-checkbox>
+      <b-form-group>
+        <div class="bold">Difficulty</div>
+        <div class="my-2">
+          <b-form-checkbox
+            checked="true"
+            @change="onDifficultyChecked(enumTrailDifficulty.Easy, $event)"
+          >Easy</b-form-checkbox>
+          <b-form-checkbox
+            checked="true"
+            @change="onDifficultyChecked(enumTrailDifficulty.Moderate, $event)"
+          >Moderate</b-form-checkbox>
+          <b-form-checkbox
+            checked="true"
+            @change="onDifficultyChecked(enumTrailDifficulty.Hard, $event)"
+          >Hard</b-form-checkbox>
+        </div>
+        <hr />
+        <div class="bold">Trail Type</div>
+        <div class="my-2">
+          <b-form-checkbox
+            checked="true"
+            @change="onTrailTypeChecked(enumTrailType.Circle, $event)"
+          >Circle</b-form-checkbox>
+          <b-form-checkbox
+            checked="true"
+            @change="onTrailTypeChecked(enumTrailType.OneWay, $event)"
+          >One Way</b-form-checkbox>
+          <b-form-checkbox
+            checked="true"
+            @change="onTrailTypeChecked(enumTrailType.Connecting, $event)"
+          >Connecting</b-form-checkbox>
+        </div>
         <hr />
         <div class="bold">Transportation</div>
         <div class="my-2">
           <b-form-checkbox @change="onServiceChecked(enumTrailService.Parking, $event)">Parking</b-form-checkbox>
           <b-form-checkbox
             @change="onServiceChecked(enumTrailService.PublicTransportAccess, $event)"
-          >Public transport</b-form-checkbox>
+          >Public Transport</b-form-checkbox>
         </div>
 
         <hr />
@@ -52,8 +82,8 @@
           <b-form-checkbox @change="onServiceChecked(enumTrailService.LappHut, $event)">Lapp Hut</b-form-checkbox>
           <b-form-checkbox @change="onServiceChecked(enumTrailService.TentSide, $event)">Tent Side</b-form-checkbox>
           <b-form-checkbox
-            @change="onServiceChecked(enumTrailService.LeanToSchelter, $event)"
-          >LeanToSchelter</b-form-checkbox>
+            @change="onServiceChecked(enumTrailService.LeanToShelter, $event)"
+          >Lean-to Shelter</b-form-checkbox>
         </div>
 
         <hr />
@@ -80,7 +110,7 @@ import "vue-slider-component/theme/default.css";
 import moment from "moment";
 import "vue-date-pick/dist/vueDatePick.css";
 import { AppState } from "@/AppState";
-import { TrailService } from "../domain/Trails";
+import { TrailService, TrailType, TrailDifficulty } from "../domain/Trails";
 
 @Component({
   components: {
@@ -92,6 +122,8 @@ export default class FilterPanel extends Vue {
   @Prop() private appState!: AppState;
 
   private enumTrailService = TrailService;
+  private enumTrailType = TrailType;
+  private enumTrailDifficulty = TrailDifficulty;
 
   public date: string = moment().format("YYYY-MM-DD");
   public parkingChecked: boolean = false;
@@ -103,6 +135,25 @@ export default class FilterPanel extends Vue {
   public hoursBounds = [0, 48];
   public distanceBoundFormatter = "{value}km";
   public hoursBoundFormatter = "{value}h";
+
+  public difficulties = [...this.appState.filtering.difficulties];
+
+  private onDifficultyChecked(
+    trailDifficulty: TrailDifficulty,
+    checked: boolean
+  ) {
+    const ds = this.appState.filtering.difficulties.filter(
+      it => it !== trailDifficulty
+    );
+    this.appState.filtering.difficulties = checked
+      ? [...ds, trailDifficulty]
+      : ds;
+  }
+
+  private onTrailTypeChecked(trailType: TrailType, checked: boolean) {
+    const types = this.appState.filtering.types.filter(it => it !== trailType);
+    this.appState.filtering.types = checked ? [...types, trailType] : types;
+  }
 
   private onServiceChecked(service: TrailService, checked: boolean) {
     const services = this.appState.filtering.services.filter(
@@ -137,6 +188,9 @@ export default class FilterPanel extends Vue {
 }
 
 .bold {
+  font-weight: bold;
+}
+legend {
   font-weight: bold;
 }
 </style>
