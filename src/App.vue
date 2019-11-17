@@ -103,6 +103,8 @@ export default class App extends Vue {
 .base-container {
   border: 1px solid #80808080;
   border-radius: 5px;
+  margin-left: 0;
+  margin-right: 0;
 }
 .filter-panel {
   border: 0 solid #80808080;

@@ -8,7 +8,7 @@
       :distance="trail.distanceKm"
       :duration="trail.durationHours"
       :difficulty="trail.difficulty"
-      :services="trail.services"
+      :services="Array.from(trail.services)"
       :img1="trail.img1"
       :img2="trail.img2"
       :img3="trail.img3"

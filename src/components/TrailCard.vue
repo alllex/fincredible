@@ -35,8 +35,8 @@
               <span class="fa-li">
                 <i class="fas fa-layer-group"></i>
               </span>
-              <span v-if="difficulty == TrailDifficulty.Easy">Easy</span>
-              <span v-else-if="difficulty == TrailDifficulty.Moderate">Moderate</span>
+              <span v-if="difficulty === TrailDifficulty.Easy">Easy</span>
+              <span v-else-if="difficulty === TrailDifficulty.Moderate">Moderate</span>
               <span v-else>Hard</span>
             </li>
           </ul>
@@ -45,14 +45,21 @@
       <hr />
       <div class="row no-gutters">
         <div class="col-md-12 p-1">
-          <img
-            :src="`${serviceIconPath}/${service}.png`"
-            class="m-1"
-            v-for="service in services"
-            :key="service"
-            width="32"
-            height="32"
-          />
+          <div>
+            <div v-if="services.length === 0">
+              <div class="text-muted m-1">No services</div>
+            </div>
+            <div v-else>
+              <img
+                :src="`${serviceIconPath}/${service}.png`"
+                class="m-1"
+                v-for="service in services"
+                :key="service"
+                width="32"
+                height="32"
+              />
+            </div>
+          </div>
         </div>
       </div>
     </div>
