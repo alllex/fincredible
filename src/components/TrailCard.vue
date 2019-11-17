@@ -1,6 +1,6 @@
 <template>
   <div class="d-flex justify-content-center mb-2">
-    <div class="card mb-3" style="max-width: 540px;">
+    <div class="card mb-3" style="max-width: 600px;">
       <div class="row no-gutters">
         <div class="col-md-11 p-1">
           <h4>{{ name }} ({{type}})</h4>
@@ -10,14 +10,14 @@
         </div>
       </div>
       <div class="row no-gutters">
-        <div class="col-md-6 pr-1">
+        <div class="col-md-5 pr-1">
           <img :src="img1" class="card-img" alt="..." />
         </div>
         <div class="col-md-4 pr-1">
           <img :src="img2" class="card-img mb-1" alt="..." />
           <img :src="img3" class="card-img" alt="..." />
         </div>
-        <div class="col-md-2">
+        <div class="col-md-3">
           <ul class="fa-ul">
             <li>
               <span class="fa-li">

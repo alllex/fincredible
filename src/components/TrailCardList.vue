@@ -1,5 +1,5 @@
 <template>
-  <div class="mb-2">
+  <div class="my-2">
     <trail-card
       v-for="trail in trails"
       :key="trail.name"
@@ -12,7 +12,7 @@
       :img1="trail.img1"
       :img2="trail.img2"
       :img3="trail.img3"
-      :crowdedness="enumCrowdedness.High"
+      :crowdedness="getCrowdedness(trail.name)"
     ></trail-card>
   </div>
 </template>
@@ -21,7 +21,7 @@
 import { Component, Prop, Vue } from "vue-property-decorator";
 import TrailCard from "./TrailCard.vue";
 import { Trail } from "@/domain/Trails";
-import { Crowdedness } from "@/domain/Crowdedness";
+import { Crowdedness, getRandomCrowdedness } from "@/domain/Crowdedness";
 
 @Component({
   components: {
@@ -32,6 +32,10 @@ export default class TrailCardList extends Vue {
   @Prop() private trails!: Trail[];
 
   private enumCrowdedness = Crowdedness;
+
+  private getCrowdedness(trailName: string): Crowdedness {
+    return getRandomCrowdedness();
+  }
 }
 </script>
 
