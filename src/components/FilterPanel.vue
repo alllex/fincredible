@@ -6,32 +6,6 @@
         <date-pick class="date-pick-wrapper" v-model="date"></date-pick>
       </div>
     </div>
-    <div class="my-2">
-      <div>Distance: {{ distanceBounds[0] }}km - {{ distanceBounds[1] }}km</div>
-      <div class="slider-div">
-        <vue-slider
-          v-model="distanceBounds"
-          :tooltip-placement="'bottom'"
-          :tooltip-formatter="distanceBoundFormatter"
-          :min="0"
-          :max="20"
-          :lazy="true"
-        ></vue-slider>
-      </div>
-    </div>
-    <div class="my-2">
-      <div>Time: {{ hoursBounds[0] }}h - {{ hoursBounds[1] }}h</div>
-      <div class="slider-div">
-        <vue-slider
-          v-model="hoursBounds"
-          :tooltip-placement="'bottom'"
-          :tooltip-formatter="hoursBoundFormatter"
-          :min="0"
-          :max="48"
-          :lazy="true"
-        ></vue-slider>
-      </div>
-    </div>
     <hr />
     <div class="my-2">
       <b-form-group>
@@ -65,6 +39,39 @@
             checked="true"
             @change="onTrailTypeChecked(enumTrailType.Connecting, $event)"
           >Connecting</b-form-checkbox>
+        </div>
+        <hr />
+        <div class="my-2">
+          <div>
+            <span class="bold">Distance:</span>
+            {{ distanceBounds[0] }}km - {{ distanceBounds[1] }}km
+          </div>
+          <div class="slider-div">
+            <vue-slider
+              v-model="distanceBounds"
+              :tooltip-placement="'bottom'"
+              :tooltip-formatter="distanceBoundFormatter"
+              :min="0"
+              :max="20"
+              :lazy="true"
+            ></vue-slider>
+          </div>
+        </div>
+        <div class="my-2">
+          <div>
+            <span class="bold">Time:</span>
+            {{ hoursBounds[0] }}h - {{ hoursBounds[1] }}h
+          </div>
+          <div class="slider-div">
+            <vue-slider
+              v-model="hoursBounds"
+              :tooltip-placement="'bottom'"
+              :tooltip-formatter="hoursBoundFormatter"
+              :min="0"
+              :max="48"
+              :lazy="true"
+            ></vue-slider>
+          </div>
         </div>
         <hr />
         <div class="bold">Transportation</div>

@@ -2,7 +2,7 @@
   <div class="d-flex justify-content-center mb-2">
     <div class="card mb-3" style="max-width: 600px;">
       <div class="row no-gutters">
-        <div class="col-md-11 p-1">
+        <div class="col-md-11 p-2">
           <h4>{{ name }} ({{type}})</h4>
         </div>
         <div class="p-1">
@@ -10,7 +10,7 @@
         </div>
       </div>
       <div class="row no-gutters">
-        <div class="col-md-5 px-1">
+        <div class="col-md-5 pr-1 pl-2">
           <img :src="img1" class="card-img" alt="..." />
         </div>
         <div class="col-md-4 pr-1">

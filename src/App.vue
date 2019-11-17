@@ -1,9 +1,6 @@
 <template>
   <div id="app">
-    <b-container>
-      <b-row>
-        <h1>Fincredible filters</h1>
-      </b-row>
+    <b-container class="base-container">
       <b-row>
         <b-col class="filter-panel" cols="auto">
           <FilterPanel :appState="state"></FilterPanel>
@@ -103,11 +100,13 @@ export default class App extends Vue {
 </style>
 
 <style scoped>
-.filter-panel {
-  border: 1px solid black;
+.base-container {
+  border: 1px solid #80808080;
+  border-radius: 5px;
 }
-.content-panel {
-  border: 1px solid black;
+.filter-panel {
+  border: 0 solid #80808080;
+  border-right-width: 1px;
 }
 .card {
   margin: 10px;
