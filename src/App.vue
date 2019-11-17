@@ -50,6 +50,10 @@ export default class App extends Vue {
         fromKm: 0,
         uptoKm: 20
       },
+      duration: {
+        fromHours: 0,
+        uptoHours: 48
+      },
       types: [TrailType.Circle, TrailType.OneWay, TrailType.Connecting],
       services: []
     },
@@ -80,6 +84,7 @@ export default class App extends Vue {
 
   @Watch("state.filtering", { deep: true })
   onTrailFilteringChange(val: TrailFiltering, oldVal: TrailFiltering) {
+    console.log("Filtering changed!");
     const filtering = this.state.filtering;
     const newMatchingTrails = this.state.allTrails.filter(it =>
       filterTrail(it, filtering)

@@ -32,7 +32,7 @@ export enum TrailService {
 export interface Trail {
   name: string;
   distanceKm: number;
-  durationHours: number | undefined;
+  durationHours: number;
   type: TrailType;
   difficulty: TrailDifficulty;
   description: string | undefined;

@@ -15,6 +15,7 @@
           :tooltip-formatter="distanceBoundFormatter"
           :min="0"
           :max="20"
+          :lazy="true"
         ></vue-slider>
       </div>
     </div>
@@ -27,6 +28,7 @@
           :tooltip-formatter="hoursBoundFormatter"
           :min="0"
           :max="48"
+          :lazy="true"
         ></vue-slider>
       </div>
     </div>
@@ -71,7 +73,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
+import { Component, Prop, Vue, Watch } from "vue-property-decorator";
 import DatePick from "vue-date-pick";
 import VueSlider from "vue-slider-component";
 import "vue-slider-component/theme/default.css";
@@ -107,9 +109,22 @@ export default class FilterPanel extends Vue {
       it => it !== service
     );
     const newServices = checked ? [...services, service] : services;
-    this.appState.filtering = {
-      ...this.appState.filtering,
-      services: newServices
+    this.appState.filtering.services = newServices;
+  }
+
+  @Watch("distanceBounds", { deep: true })
+  onDistanceBoundsChange(val: number[], oldVal: number[]) {
+    this.appState.filtering.distance = {
+      fromKm: val[0],
+      uptoKm: val[1]
+    };
+  }
+
+  @Watch("hoursBounds", { deep: true })
+  onHoursBoundsChange(val: number[], oldVal: number[]) {
+    this.appState.filtering.duration = {
+      fromHours: val[0],
+      uptoHours: val[1]
     };
   }
 }

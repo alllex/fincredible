@@ -190,7 +190,7 @@ export let trails: Trail[] = [
   {
     name: "Veikkola-Salmi Connecting Trail",
     distanceKm: 20,
-    durationHours: undefined,
+    durationHours: 48,
     difficulty: TrailDifficulty.Hard,
     type: TrailType.OneWay,
     description: "Challenging.",
@@ -216,7 +216,7 @@ export let trails: Trail[] = [
   {
     name: "Maahisenkierros",
     distanceKm: 2,
-    durationHours: undefined,
+    durationHours: 5,
     difficulty: TrailDifficulty.Hard,
     type: TrailType.Circle,
     description: "",
