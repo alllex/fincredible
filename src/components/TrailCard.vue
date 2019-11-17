@@ -10,7 +10,7 @@
         </div>
       </div>
       <div class="row no-gutters">
-        <div class="col-md-5 pr-1">
+        <div class="col-md-5 px-1">
           <img :src="img1" class="card-img" alt="..." />
         </div>
         <div class="col-md-4 pr-1">
@@ -42,6 +42,7 @@
           </ul>
         </div>
       </div>
+      <hr />
       <div class="row no-gutters">
         <div class="col-md-12 p-1">
           <img
@@ -105,4 +106,7 @@ export default class TrailCard extends Vue {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.card hr {
+  margin-bottom: 0;
+}
 </style>
