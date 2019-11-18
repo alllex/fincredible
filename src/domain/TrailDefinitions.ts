@@ -147,7 +147,7 @@ export let trails: Trail[] = [
     ]),
     img1: makePhotoPath("7.png"),
     img2: makePhotoPath("71.jpeg"),
-    img3: makePhotoPath("72.jpg")
+    img3: makePhotoPath("72.jpeg")
   },
   {
     name: "Klassarinkierros Trail",
